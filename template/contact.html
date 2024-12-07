@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4" style="color: #008ECC;">Contact Us</h1> <!-- Updated color -->
+    <p class="text-center" style="color: #008ECC;">Feel free to reach out to us using the form below or via our contact details.</p> <!-- Updated color -->
+
+    <!-- Success Message -->
+    {% if messages %}
+    <div class="alert alert-success text-center">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+    {% endif %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form method="post" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_name" class="form-label" style="color: #008ECC;">Your Name</label> <!-- Updated color -->
+                {{ form.name }}
+            </div>
+            <div class="mb-3">
+                <label for="id_email" class="form-label" style="color: #008ECC;">Your Email</label> <!-- Updated color -->
+                {{ form.email }}
+            </div>
+            <div class="mb-3">
+                <label for="id_message" class="form-label" style="color: #008ECC;">Your Message</label> <!-- Updated color -->
+                {{ form.message }}
+            </div>
+            <button type="submit" class="btn" style="background-color: #008ECC; color: #fff;">Send Message</button> <!-- Updated color -->
+        </form>
+    </div>
+</div>
+
+    <div class="text-center mt-5">
+        <h4 style="color: #008ECC;">Other Ways to Contact Us</h4> <!-- Updated color -->
+        <p>Email: <a href="mailto:2300032296@kluniversity.in" style="color: #008ECC;">2300032296@kluniversity.in</a></p> <!-- Updated color -->
+        <p>Phone: +91 9347495928</p>
+        <p> Mobile: +91 9030204091</p>
+        <p>Address: Kl university, Example vaddeswaram, Guntur, India</p>
+    </div>
+</div>
+{% endblock %}

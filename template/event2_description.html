@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Description</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #007bff, #ffffff);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Event Container */
+        .event-container {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Event Header */
+        .event-header h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin: 0;
+            text-shadow: 2px 2px 5px #004b99;
+        }
+
+        /* Event Content */
+        .event-content p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px #0066cc;
+        }
+
+        /* Button Styles */
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #007bff;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="event-container">
+        <div class="event-header">
+            <h1> Marriage Event</h1>
+        </div>
+        <div class="event-content">
+            <p>A marriage event is one of the most significant and joyous occasions in a person's life, symbolizing the union of two individuals and the beginning of a shared journey. It is a celebration of love, commitment, and the merging of two families, with cultural and personal traditions intertwined throughout the event. The significance of a marriage event extends beyond the wedding ceremony itself, encompassing the emotions, customs, and rituals that mark the beginning of a lifelong partnership.
+
+The wedding ceremony is typically the focal point of a marriage event, where the couple exchanges vows, pledges, and promises to one another. The ceremony can vary widely depending on the cultural, religious, or personal preferences of the couple. In many cultures, weddings are deeply rooted in tradition, with specific rituals and customs passed down through generations. These may include the exchange of rings, prayers, dancing, and symbolic acts such as lighting a unity candle or tying a knot to signify the bond between the couple.
+
+The marriage event is not only about the ceremony but also the celebration that follows. The reception is a time for family and friends to come together, enjoy food, music, and dance, and celebrate the new life the couple is starting together. It is often an opportunity for guests to share their well-wishes, offer advice, and make lasting memories. The decorations, music, attire, and cuisine all contribute to creating a memorable atmosphere that reflects the personalities and preferences of the couple.
+
+A marriage event is also a milestone that marks the beginning of a new chapter in life. It is a time for the couple to reflect on their love and commitment to each other and to the future they will build together. The event symbolizes the promises made to support and cherish one another through life's challenges and triumphs.
+
+In conclusion, a marriage event is more than just a celebration; it is an emotional, cultural, and social experience that unites people in love and commitment. It is a day of joy, tradition, and new beginnings, filled with cherished memories and the hope for a bright future.
+</p>
+            <button id="learnMoreButton">Learn More</button>
+            <a href="{% url 'index' %}">
+    <button type="button">Home</button>
+                <a href="{% url 'events' %}">
+    <button type="button">Another event</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('learnMoreButton');
+
+            button.addEventListener('click', () => {
+                alert('More exciting details are coming soon!');
+            });
+
+            // Add subtle floating animation
+            const container = document.querySelector('.event-container');
+            let isMovingUp = true;
+
+            setInterval(() => {
+                if (isMovingUp) {
+                    container.style.transform = 'translateY(-10px)';
+                } else {
+                    container.style.transform = 'translateY(0)';
+                }
+                isMovingUp = !isMovingUp;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

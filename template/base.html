@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        body {
+            background: linear-gradient(135deg, #f3f4f7, #d9e8f5);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #008ECC;
+            border: none;
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+            font-size: 30px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .nav-buttons {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .nav-buttons .btn {
+            background-color: #005a8c;
+            color: white;
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-family: sans-serif;
+            border-radius: 5px;
+            transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-buttons .btn:hover {
+            background-color: #7CB9E8;
+            border-color: red;
+            animation: blink 1s infinite;
+            transform: scale(1.05);
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                border-color: transparent;
+            }
+            50% {
+                border-color: black;
+            }
+        }
+
+        .user-section {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            text-align: right;
+        }
+
+        .user-id {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .logout-button {
+            display: inline-block;
+            background-color: #005a8c;
+            color: white !important;
+            border: none;
+            padding: 5px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background-color: #7CB9E8;
+        }
+
+        .container {
+            margin-top: 70px; /* To prevent content overlap with navbar */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Events</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav-buttons">
+                    <a href="{% url 'index' %}" class="btn">Home</a>
+                    <a href="{% url 'about' %}" class="btn">About</a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'events' %}" class="btn">Events</a>
+                    <a href="{% url 'booking' %}" class="btn">Booking</a>
+                    <a href="{% url 'contact' %}" class="btn">Contact</a>
+                    <a href="{% url 'feedback' %}" class="btn">Feedback</a>
+                        <a href="{% url 'chatbot' %}" class="btn">Chatbot</a>
+
+
+                </ul>
+                <div class="user-section">
+                    <div class="user-id">{{ user.username }}</div>
+                    <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+                </div>
+                {% else %}
+                <div class="auth-buttons">
+                    <a href="{% url 'login' %}" class="btn">Login</a>
+                    <a href="{% url 'register' %}" class="btn">Sign Up</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Main Content -->
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center" style="margin-top: 30px; padding: 10px; background-color: #008ECC; color: white;">
+        <p>&copy; 2024 Event Management System</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

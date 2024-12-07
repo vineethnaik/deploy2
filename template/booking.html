@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Booking
+{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <h1 style="text-align: center; color: #008ECC; font-family: Arial, sans-serif; margin-bottom: 20px;">Book Your Events</h1>
+
+    <form action="" method="POST" style="font-family: Arial, sans-serif;">
+
+        {% csrf_token %}
+
+        <div style="margin-bottom: 15px;">
+            {{ form.cus_name.label_tag }}
+            {{ form.cus_name }}
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            {{ form.cus_ph.label_tag }}
+            {{ form.cus_ph }}
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            {{ form.booking_date.label_tag }}
+            {{ form.booking_date }}
+        </div>
+
+        <button type="submit" style="width: 100%; padding: 10px 0; font-size: 1.5rem; color: white; background-color: #008ECC; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
+    Book Now
+</button>
+
+    </form>
+</div>
+{% endblock %}

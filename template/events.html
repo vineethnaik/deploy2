@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Events
+{% endblock %}
+
+{% block content %}
+<div class="events-gallery">
+    <!-- Event 1 -->
+    <a href="{% url 'event1_description' %}" class="event-link">
+        <img src="{% static 'images/Event1.jpg' %}" alt="Event 1" class="event-img" height="200" width="400">
+    </a>1
+    <br>
+    <br>
+    <br>
+    <!-- Event 2 -->
+    <a href="{% url 'event2_description' %}" class="event-link">
+        <img src="{% static 'images/event2.jpg' %}" alt="Event 2" class="event-img" height="200" width="400">
+    </a>
+     <br>
+    <br>
+    <br>
+    <!-- Event 3 -->
+    <a href="{% url 'event3_description' %}" class="event-link">
+        <img src="{% static 'images/event3.jpg' %}" alt="Event 3" class="event-img" height="200" width="400">
+    </a>
+     <br>
+    <br>
+    <br>
+    <!-- Event 4 -->
+    <a href="{% url 'event4_description' %}" class="event-link">
+        <img src="{% static 'images/event4.jpg' %}" alt="Event 4" class="event-img" height="200" width="400">
+    </a>
+     <br>
+    <br>
+    <br>
+    <!-- Event 5 -->
+    <a href="{% url 'event5_description' %}" class="event-link">
+        <img src="{% static 'images/event5.jpg' %}" alt="Event 5" class="event-img" height="200" width="400">
+    </a>
+</div>
+{% endblock %}
+
+<!-- CSS -->
+<style>
+    /* Gallery Style */
+    .events-gallery {
+        display: flex;               /* Use flexbox for layout */
+        flex-wrap: wrap;             /* Allow items to wrap onto new lines */
+        gap: 20px;                   /* Space between the images */
+        padding: 20px;
+        justify-content: space-between; /* Distribute items evenly with space between */
+    }
+
+    .event-link {
+        display: block;
+        width: calc(33.333% - 20px); /* Ensure 3 items per row with spacing */
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;          /* Rounded corners */
+    }
+
+    .event-img {
+        width: 100%;                 /* Full width of the container */
+        height: auto;                /* Maintain aspect ratio */
+        border: 3px solid black;     /* Add black borders */
+        border-radius: 8px;          /* Rounded corners for consistency */
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Hover effect */
+    .event-link:hover .event-img {
+        transform: scale(1.1);       /* Slight zoom on hover */
+        opacity: 0.9;
+    }
+
+    /* Fade-in effect for images */
+    .event-img {
+        animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Adding animation to event images for smooth entry */
+    .event-img {
+        animation: zoomIn 1.5s ease-out;
+    }
+
+    @keyframes zoomIn {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Responsive: Adjust layout for smaller screens */
+    @media (max-width: 768px) {
+        .event-link {
+            width: calc(50% - 20px); /* 2 items per row on medium screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .event-link {
+            width: 100%; /* 1 item per row on small screens */
+        }
+    }
+</style>
+
+<script>
+    // JavaScript for cycling through images
+    let eventImages = document.querySelectorAll('.event-img');
+    let currentImageIndex = 0;
+
+    function cycleImages() {
+        eventImages[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % eventImages.length;
+        eventImages[currentImageIndex].classList.add('active');
+    }
+
+    // Set an interval to change images every 3 seconds
+    setInterval(cycleImages, 3000);
+</script>

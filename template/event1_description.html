@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Description</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #007bff, #ffffff);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Event Container */
+        .event-container {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Event Header */
+        .event-header h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin: 0;
+            text-shadow: 2px 2px 5px #004b99;
+        }
+
+        /* Event Content */
+        .event-content p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px #0066cc;
+        }
+
+        /* Button Styles */
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #007bff;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="event-container">
+        <div class="event-header">
+            <h1> Engagement Event</h1>
+        </div>
+        <div class="event-content">
+            <p>Engagement is a crucial aspect of both personal and professional life, encompassing various meanings depending on context. At its core, engagement refers to the involvement, commitment, and enthusiasm shown by an individual in any given activity or relationship. In the workplace, engagement often refers to the degree to which employees feel emotionally connected to their job, which can significantly influence productivity, job satisfaction, and overall performance. Highly engaged employees tend to go beyond basic expectations, contributing positively to the organization’s success.
+
+In personal relationships, engagement denotes the level of emotional investment individuals have in their connections with others. Whether in friendships, family dynamics, or romantic relationships, engagement strengthens bonds and fosters trust, understanding, and communication. Engaged individuals show a genuine interest in others, prioritizing their well-being and offering support when needed. This deep connection allows for healthier, more resilient relationships.
+
+Engagement also plays a significant role in education, particularly with students. An engaged student is one who actively participates in learning, displays curiosity, and applies critical thinking. Engagement in the classroom is linked to better academic performance and long-term retention of information. Teachers who can foster an environment of engagement encourage students to take ownership of their learning and be more motivated to succeed.
+
+In the digital age, engagement extends to online platforms, where users interact with content through likes, shares, and comments. Social media platforms thrive on user engagement, and this interaction shapes trends, influences opinions, and affects marketing strategies. Businesses and influencers rely on engagement metrics to measure their reach and connect with their audience.
+
+In conclusion, engagement is a multifaceted concept that plays a pivotal role in various aspects of life, from work to relationships, education, and digital interaction. It is through engagement that we build connections, create value, and experience growth.
+
+</p>
+            <button id="learnMoreButton">Learn More</button>
+            <a href="{% url 'index' %}">
+    <button type="button">Home</button>
+                <a href="{% url 'events' %}">
+    <button type="button">Another event</button>
+</a>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('learnMoreButton');
+
+            button.addEventListener('click', () => {
+                alert('More exciting details are coming soon!');
+            });
+
+            // Add subtle floating animation
+            const container = document.querySelector('.event-container');
+            let isMovingUp = true;
+
+            setInterval(() => {
+                if (isMovingUp) {
+                    container.style.transform = 'translateY(-10px)';
+                } else {
+                    container.style.transform = 'translateY(0)';
+                }
+                isMovingUp = !isMovingUp;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

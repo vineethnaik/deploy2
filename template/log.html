@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/stylelog.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+      body {
+        background-color: lightblue;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        max-width: 400px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .title {
+        font-size: 26px;
+        font-weight: bold;
+        text-align: center;
+        color: #007BFF;
+        margin-bottom: 20px;
+      }
+      .input-box {
+        margin-bottom: 15px;
+      }
+      .input-box label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+        color: #555;
+      }
+      .input-box input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+      }
+      .input-box input:focus {
+        border-color: #007BFF;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+      .button input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        color: white;
+        background: #007BFF;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      .button input:hover {
+        background: #0056b3;
+      }
+      .alert-message {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #d9534f;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">Login</div>
+      <div class="content">
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <div class="input-box">
+            <label for="username">User Name:</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+          <div class="input-box">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <div class="button">
+            <input type="submit" value="Log In">
+          </div>
+        </form>
+        <div>
+          {% for message in messages %}
+          <div class="alert-message">{{ message }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

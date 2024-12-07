@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block content %}
+<div style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0;">
+    <header style="background: #008ECC; color: #fff; padding: 10px 20px; text-align: center;"> <!-- Updated color -->
+        <h1>About Us</h1>
+    </header>
+    <section style="padding: 20px;">
+        <h2>Who We Are</h2>
+        <p>
+            Welcome to our event management project website! We are dedicated and glad to complete this project.
+        </p>
+        <h2>Our Vision</h2>
+        <p>
+            To be the leading provider in our field by constantly innovating and improving our services.
+        </p>
+        <h2>Contact Us</h2>
+        <p>
+            Have questions? Feel free to <a href="{% url 'contact' %}" style="color: #008ECC; text-decoration: none;">reach out to us</a>. We're here to help! <!-- Updated color -->
+        </p>
+    </section>
+    <footer style="text-align: center; padding: 10px 20px; background: #f4f4f4; color: #555;">
+        <p>&copy; 2024 Our Company. All Rights Reserved.</p>
+    </footer>
+</div>
+{% endblock %}
